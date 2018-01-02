@@ -1,0 +1,41 @@
+INSERT INTO environments 
+VALUES (NULL, ?,?,?)
+#
+UPDATE servers 
+SET eid = ? 
+WHERE srv_id = ?
+#
+SELECT name, description, env_type 
+FROM environments 
+WHERE eid = ?
+#
+UPDATE environments 
+SET name = ?, description = ?, env_type = ? 
+WHERE eid = ?
+#
+UPDATE servers 
+SET eid = -1 
+WHERE eid = ? 
+#
+UPDATE servers 
+SET eid = ? 
+WHERE eid = -1 AND srv_id = ? 
+#
+DELETE FROM environments 
+WHERE eid = ?
+#
+UPDATE servers 
+SET eid = 0 
+WHERE eid = ?
+#
+SELECT name, description 
+FROM env_types
+#
+SELECT srv_id, display_name 
+FROM servers 
+WHERE eid = 0 OR eid = ?
+#
+SELECT srv_id
+FROM servers
+WHERE eid = ?
+#

@@ -1,0 +1,156 @@
+$def with ( path_info, ns_selected, selected )
+<div class="right_col" role="main">
+	<div class="row">
+		<div class="col-md-10">
+			<div class="x_panel">
+					<h1>$path_info[1]</h1>
+					<span><p>Drag and drop Environments to include</p></span>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-2 col-xs-2" style="margin-top: 10px;">
+			<div class="btn-group">
+				<button type="button" class="btn btn-success" onclick="submitPath()">Update</button>
+				<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					<span class="caret"></span>
+					<span class="sr-only">Toggle Dropdown</span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="/path_form_$path_info[0]">Edit information</a>
+					</li>
+					<li><a href="/path_delete_$path_info[0]">Delete Path</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="x_panel">
+				<div class="x_content">
+					<h2>Non members</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+
+		<div class="col-md-3 col-sm-3 col-xs-6">
+			<div class="x_panel">
+				<div class="x_content">
+					<span>Development</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-6">
+			<div class="x_panel">
+				<div class="x_content">
+					<span>Testing</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-6">
+			<div class="x_panel">
+				<div class="x_content">
+					<span>Staging</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-3 col-sm-3 col-xs-6">
+			<div class="x_panel">
+				<div class="x_content">
+					<span>Live</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" style="margin-bottom: 20px;">
+		<div id="ns_DEV" class="col-md-3 col-sm-3 col-xs-6">
+			$for env in ns_selected[0]:
+				<div class="list-group-item">$env</div>
+		</div>
+
+		<div id="ns_TEST" class="col-md-3 col-sm-3 col-xs-6">
+			$for env in ns_selected[1]:
+				<div class="list-group-item">$env</div>
+		</div>
+
+		<div id="ns_STAGING" class="col-md-3 col-sm-3 col-xs-6">
+			$for env in ns_selected[2]:
+				<div class="list-group-item">$env</div>
+		</div>
+
+		<div id="ns_LIVE" class="col-md-3 col-sm-3 col-xs-6">
+			$for env in ns_selected[3]:
+				<div class="list-group-item">$env</div>
+		</div>
+		
+	</div>
+
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="x_panel">
+				<div class="x_content">
+					<h2>Members</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-3 col-sm-3 col-xs-6">
+			<div class="x_panel">
+				<div class="x_content">
+					<span>Development</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-6">
+			<div class="x_panel">
+				<div class="x_content">
+					<span>Testing</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-6">
+			<div class="x_panel">
+				<div class="x_content">
+					<span>Staging</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-3 col-sm-3 col-xs-6">
+			<div class="x_panel">
+				<div class="x_content">
+					<span>Live</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div id="s_DEV" class="col-md-3 col-sm-3 col-xs-6">
+			$for env in selected[0]
+				<div class="list-group-item">$env</div>
+		</div>
+
+		<div id="s_TEST" class="col-md-3 col-sm-3 col-xs-6">
+			$for env in selected[1]
+				<div class="list-group-item">$env</div>
+		</div>
+
+		<div id="s_STAGING" class="col-md-3 col-sm-3 col-xs-6">
+			$for env in selected[2]
+				<div class="list-group-item">$env</div>
+		</div>
+
+		<div id="s_LIVE" class="col-md-3 col-sm-3 col-xs-6">
+			$for env in selected[3]
+				<div class="list-group-item">$env</div>
+		</div>
+	</div>
+</div>

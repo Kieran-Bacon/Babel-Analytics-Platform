@@ -1,0 +1,7 @@
+SELECT * 
+FROM paths
+#
+SELECT COUNT(*) 
+FROM environments env, env_path_lkp epl 
+WHERE epl.pid = ? AND env.env_type = ? AND epl.eid = env.eid
+#

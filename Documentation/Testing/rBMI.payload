@@ -1,0 +1,26 @@
+{
+    "correlationID":"abcdefg12345",
+    "Date":"21-AUG-2015",
+    "Weight_unit":"kg",
+    "Height_unit":"cm",
+    "Individuals": [
+        {
+            "Name":"Bob",
+            "DOB":"05-MAY-1985",
+            "Height":178,
+            "Weight":60
+        },
+        {
+            "Name":"Mary",
+            "DOB":"11-JUN-1995",
+            "Height":165,
+            "Weight":48
+        },
+        {
+            "Name":"Daniel",
+            "DOB":"12-JAN-1967",
+            "Height":185,
+            "Weight":55
+        }
+    ]  
+}

@@ -1,0 +1,177 @@
+$def with ( alerts )
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Plato login</title>
+
+    <!-- Bootstrap -->
+    <link href="./static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="./static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- PNotify -->
+    <link href="./static/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+    <link href="./static/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+    <link href="./static/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="./static/build/css/custom.min.css" rel="stylesheet">
+  </head>
+
+  <body class="login">
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form action="login.html" method="POST">
+              <h1>Please Login</h1>
+              <div>
+                <input type="text" name="username" class="form-control" placeholder="Username" required="" />
+              </div>
+              <div>
+                <input type="password" name="password" class="form-control" placeholder="Password" required="" />
+              </div>
+              <div>
+                <button type="submit" class="btn btn-default submit">Log in</button>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><i class="fa fa-paw"></i> {plato}-Analytics</h1>
+                  <p>©2016 All Rights Reserved. Plato-Analytics don't currently have terms to comply with.</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <div id="register" class="animate form registration_form">
+          <section class="login_content">
+            <form>
+              <h1>Create Account</h1>
+              <div>
+                <input type="text" class="form-control" placeholder="Username" required="" />
+              </div>
+              <div>
+                <input type="email" class="form-control" placeholder="Email" required="" />
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="Password" required="" />
+              </div>
+              <div>
+                <a class="btn btn-default submit" href="index.html">Submit</a>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">Already a member ?
+                  <a href="#signin" class="to_register"> Log in </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="./static/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="./static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- PNotify -->
+    <script src="./static/vendors/pnotify/dist/pnotify.js"></script>
+    <script src="./static/vendors/pnotify/dist/pnotify.buttons.js"></script>
+    <script src="./static/vendors/pnotify/dist/pnotify.nonblock.js"></script>
+
+    <!-- PNotify -->
+    <script>
+      $$(document).ready(function() {
+        console.log("PNotify section");
+        $for alert in alerts:
+          new PNotify({
+          title: '$alert[1]',
+          text: '$alert[2]',
+          type: '$alert[0]',
+          hide: false,
+          styling: 'bootstrap3'
+          });
+      });
+    </script>
+    <!-- /PNotify -->
+
+    <!-- Custom Notification -->
+    <script>
+      $$(document).ready(function() {
+        var cnt = 10;
+
+        TabbedNotification = function(options) {
+          var message = "<div id='ntf" + cnt + "' class='text alert-" + options.type + "' style='display:none'><h2><i class='fa fa-bell'></i> " + options.title +
+            "</h2><div class='close'><a href='javascript:;' class='notification_close'><i class='fa fa-close'></i></a></div><p>" + options.text + "</p></div>";
+
+          if (!document.getElementById('custom_notifications')) {
+            alert('doesnt exists');
+          } else {
+            $$('#custom_notifications ul.notifications').append("<li><a id='ntlink" + cnt + "' class='alert-" + options.type + "' href='#ntf" + cnt + "'><i class='fa fa-bell animated shake'></i></a></li>");
+            $('#custom_notifications #notif-group').append(message);
+            cnt++;
+            CustomTabs(options);
+          }
+        };
+
+        CustomTabs = function(options) {
+          $$('.tabbed_notifications > div').hide();
+          $$('.tabbed_notifications > div:first-of-type').show();
+          $$('#custom_notifications').removeClass('dsp_none');
+          $$('.notifications a').click(function(e) {
+            e.preventDefault();
+            var $$this = $$(this),
+              tabbed_notifications = '#' + $$this.parents('.notifications').data('tabbed_notifications'),
+              others = $$this.closest('li').siblings().children('a'),
+              target = $$this.attr('href');
+            others.removeClass('active');
+            $$this.addClass('active');
+            $$(tabbed_notifications).children('div').hide();
+            $$(target).show();
+          });
+        };
+
+        CustomTabs();
+
+        var tabid = idname = '';
+
+        $$(document).on('click', '.notification_close', function(e) {
+          idname = $$(this).parent().parent().attr("id");
+          tabid = idname.substr(-2);
+          $$('#ntf' + tabid).remove();
+          $$('#ntlink' + tabid).parent().remove();
+          $$('.notifications a').first().addClass('active');
+          $$('#notif-group div').first().css('display', 'block');
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+INFO 19:09:27.339 Bin man thread started.
+DEBUG3 19:14:50.127 HTTP request parsed successfully.
+MANAGEMENT 19:14:50.128 GET bammins /STATUS/* 200 
+DEBUG3 19:14:50.227 HTTP request parsed successfully.
+MANAGEMENT 19:14:50.227 GET bammins /ADDRESS/* 200 
+DEBUG3 19:14:50.889 HTTP request parsed successfully.
+MANAGEMENT 19:14:50.889 GET bammins /ADDRESS/* 200 
+DEBUG3 19:14:52.990 HTTP request parsed successfully.
+MANAGEMENT 19:14:52.990 GET bammins /STATUS/* 200 
+DEBUG3 19:16:30.142 HTTP request parsed successfully.
+MANAGEMENT 19:16:30.142 GET bammins /STATUS/* 200 
+DEBUG3 19:17:11.390 HTTP request parsed successfully.
+MANAGEMENT 19:17:11.390 GET bammins /STATUS/* 200 
+DEBUG3 19:21:18.919 HTTP request parsed successfully.
+MANAGEMENT 19:21:18.920 GET bammins /STATUS/* 200 
+DEBUG3 19:24:29.468 HTTP request parsed successfully.
+MANAGEMENT 19:24:29.471 GET bammins /ADDRESS/* 200 
+DEBUG3 19:24:30.335 HTTP request parsed successfully.
+MANAGEMENT 19:24:30.561 POST bammins /NEW 200 SUCCESS.
+DEBUG3 19:37:00.698 HTTP request parsed successfully.
+INFO 19:37:00.698 Management Server: Resource '/factor' has been deactivate successfully
+MANAGEMENT 19:37:00.698 DELETE bammins /factor 200 
+DEBUG3 19:37:00.699 HTTP request parsed successfully.
+MANAGEMENT 19:37:00.699 GET bammins /ADDRESS/* 200 
+DEBUG3 19:37:01.452 HTTP request parsed successfully.
+MANAGEMENT 19:37:01.981 POST bammins /NEW 200 SUCCESS.
+DEBUG3 21:27:57.702 HTTP request parsed successfully.
+INFO 21:27:57.703 Management Server: Resource '/factor' has been activate successfully
+MANAGEMENT 21:27:57.705 GET bammins /ACTIVATE/factor 200 
+DEBUG3 21:39:57.574 HTTP request parsed successfully.
+INFO 21:39:57.574 Management Server: Resource '/factor' has been deactivate successfully
+MANAGEMENT 21:39:57.576 GET bammins /DEACTIVATE/factor 200 
+DEBUG3 21:44:31.511 HTTP request parsed successfully.
+INFO 21:44:31.511 Management Server: Resource '/factor' has been deactivate successfully
+MANAGEMENT 21:44:31.513 GET bammins /DEACTIVATE/factor 200 
+DEBUG3 21:44:42.793 HTTP request parsed successfully.
+INFO 21:44:43.803 Management Server: Resource '/factor' has been activate successfully
+MANAGEMENT 21:44:43.808 GET bammins /ACTIVATE/factor 200 
+DEBUG3 22:43:24.623 HTTP request parsed successfully.
+INFO 22:43:24.630 Management Server: Resource '/factor' has been deactivate successfully
+MANAGEMENT 22:43:24.633 DELETE bammins /factor 200 
+DEBUG3 22:50:24.476 HTTP request parsed successfully.
+MANAGEMENT 22:50:24.479 DELETE bammins /factor 404 
+DEBUG3 22:50:43.429 HTTP request parsed successfully.
+MANAGEMENT 22:50:43.430 GET bammins /STATUS/* 200 
+DEBUG3 22:51:55.845 HTTP request parsed successfully.
+MANAGEMENT 22:51:55.849 GET bammins /STATUS/* 200 
+INFO 23:09:15.755 System "termination" (SIGTERM) signal received
+WARNING 23:09:15.787 Un-handled signal

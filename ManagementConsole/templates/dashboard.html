@@ -1,0 +1,187 @@
+$def with ( tiles, developing, environments )
+<div class="right_col" role="main">
+	<div class="row tile_count">
+		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+			<span class="count_top"><i class="fa fa-user"></i> System Requests </span>
+			<div class="count">$tiles[0]</div>
+		</div>
+		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+			<span class="count_top"><i class="fa fa-clock-o"></i> Avg. Time Taken </span>
+			<div class="count">$tiles[1]</div>
+		</div>
+
+		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+			<span class="count_top"><i class="fa fa-clock-o"></i> </span>JIT Responses
+			<div class="count">$tiles[2]</div>
+		</div>
+
+		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+			<span class="count_top"><i class="fa fa-user"></i> Number of Servers</span>
+			<div class="count">$tiles[3]</div>
+		</div>
+		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+			<span class="count_top"><i class="fa fa-user"></i> Number of Services</span>
+			<div class="count">$tiles[4]</div>
+		</div>
+		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+			<span class="count_top"><i class="fa fa-user"></i>Unsucessfull responses</span>
+			<div class="count">$tiles[5]</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6 col-sm-6 col-xs-12">
+			<div class="x_panel" style="height: 370px;">
+				<div class="x_title">
+					<h2>Live Service Requests <small> Compared Popularity of services. </small></h2>
+					<ul class="nav navbar-right panel_toolbox">
+						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+						</li>
+						<li><a class="close-link"><i class="fa fa-close"></i></a>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content">
+
+					$if environments:
+						<div id="servicePie" style="height:300px;"></div>
+					$else:
+						<p>Currently there are no live services known to the Management Console.</p>
+					
+
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6 col-sm-6 col-xs-12">
+			<div class="x_panel" style="height: 370px;">
+				<div class="x_title">
+					<h2>Developing services <small> Path completion overview. </small></h2>
+					<ul class="nav navbar-right panel_toolbox">
+						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+						</li>
+						<li><a class="close-link"><i class="fa fa-close"></i></a>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content">
+					$if not developing:
+						<p>There is currently no development work happening on any service. When there are, they will look like this below.</p>
+					<table class="table table-striped">
+						<tbody>
+
+							$if not developing:
+								<tr>
+									<td style="width: 20%; font-weight: bold;">Example Service</td>
+									<td style="width: 5%;"><a href="#" class="btn btn-success btn-xs"><i class="fa fa-search"></i></a></td>
+									<td style="width: 10%;">1.2.2.3</td>
+									<td>
+										<small>$82% Complete</small>
+										<div class="progress progress_sm">
+											<div class="progress-bar bg-green" role="progressbar" style="width: 82%;" aria-valuenow="82"></div>
+										</div>
+									</td>
+								</tr>
+
+							$for service in developing:
+								$code:
+									if service[2] <= 40:
+										colour = '-danger'
+									elif service[2] <= 60:
+										colour = '-warning'
+									elif service[2] <= 80:
+										colour = '-success'
+									else:
+										colour =''
+								<tr>
+									<td style="width: 20%; font-weight: bold;">$service[0]</td>
+									<td style="width: 5%;"><a href="/service_details_$service[3]" class="btn btn-success btn-xs"><i class="fa fa-search"></i></a></td>
+									<td style="width: 10%;">$service[1]</td>
+									<td>
+										<small>$service[2]% Complete</small>
+										<div class="progress progress_sm">
+											<div class="progress-bar bg-green" role="progressbar" style="width: $service[2]%;" aria-valuenow="$service[2]"></div>
+										</div>
+									</td>
+								</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+	
+	<div class="row">
+		$ count = 0
+		$for env in environments:
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="x_panel">
+					<div class="x_title">
+						<h2>$env[0] <small> System Environment</small></h2>
+						<ul class="nav navbar-right panel_toolbox">
+							<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+							</li>
+							<li><a class="close-link"><i class="fa fa-close"></i></a>
+							</li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<div class="x_content">
+						$if (count % 2) == 0:
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<div id="env_graph_$env[5]" style="height:350px;"></div>
+							</div>
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<div class="flex">
+								<ul class="list-inline count2">
+									<li>
+										<h3>$env[1]</h3>
+										<span>Type</span>
+									</li>
+									<li>
+										<h3>$env[2]</h3>
+										<span>Requests</span>
+									</li>
+									<li>
+										<h3>$env[3]</h3>
+										<span>Machines</span>
+									</li>
+								</ul>
+							</div>
+
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>V.</th>
+										<th>Resource Name</th>
+										<th>Status</th>
+										<th>View</th>
+									</tr>
+								</thead>
+								<tbody>
+									$for service in env[4]:
+									<tr>
+										<th scope="row">$service[2]</th>
+										<td>$service[1]</td>
+										<td><strong>$service[3]</strong></td>
+										<td>
+											<a href="service_details_$service[0]" class="btn btn-success btn-xs"><i class="fa fa-search"></i></a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						$if (count % 2) != 0:
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<div id="env_graph_$env[5]" style="height:350px;"></div>
+							</div>
+						$ count = count + 1
+					</div>
+				</div>
+			</div>
+	</div>
+</div>

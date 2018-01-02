@@ -1,0 +1,6 @@
+SELECT ser.service_name, sv.version 
+FROM services ser, services_versions sv, service_deployment_lkp sdl 
+WHERE sdl.eid = ? AND sv.sid = sdl.sid AND ser.sgid = sv.sgid 
+GROUP BY ser.service_name 
+ORDER BY sv.version DESC
+#

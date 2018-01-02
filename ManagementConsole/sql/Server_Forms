@@ -1,0 +1,20 @@
+SELECT * 
+FROM env_types
+#
+SELECT * 
+FROM environments 
+WHERE env_type = ?
+#
+INSERT INTO servers 
+VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+#
+SELECT * 
+FROM servers 
+WHERE srv_id = ?
+#
+DELETE FROM servers 
+WHERE srv_id = ?
+#
+SELECT ssh_username, ssh_password, ssh_key_address 
+FROM servers WHERE srv_id = ?
+#

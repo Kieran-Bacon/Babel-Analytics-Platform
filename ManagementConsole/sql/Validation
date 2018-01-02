@@ -1,0 +1,4 @@
+SELECT count(*) 
+FROM servers 
+WHERE machine_address = ? AND ( a_port_num = ? OR m_port_num = ? OR ssh_port_num = ?)
+#

@@ -1,0 +1,63 @@
+$def with ( serversList )
+<!-- Inner page only to be included with nav bar -->
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Service Overview <small> All services that have be handled by the management console.</small></h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <table class="table table-striped projects">
+            <thead>
+              <tr>
+                <th>Server Name</th>
+                <th>Environment</th>
+                <th>Address</th>
+                <th>Management Port</th>
+                <th></th>
+                <th>Analytic Port</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              $for server in serversList:
+                <tr>
+                  <td>$server[2]</td>
+                  <td>$server[1]</td>
+                  <td>$server[3]</td>
+                  <td>$server[5]</td>
+                  <td id="mStat_$server[0]">
+                    <i class="blue" style="font-weight: bold;">WAITING</i>
+                  </td>
+                  <td>$server[4]</td>
+                  <td id="aStat_$server[0]">
+                    <i class="blue" style="font-weight: bold;">WAITING</i>
+                  </td>
+                  <td>
+                    <a href="/server_details_$server[0]" class="btn btn-success btn-xs"> View <i class="fa fa-search"></i></a>
+                    <a href="/delete_server_$server[0]" class="btn btn-danger btn-xs"> Delete <i class="fa fa-search"></i></a>
+                  </td>
+                </tr>
+
+                <script type="text/javascript">
+                  $$(document).ready(function(){checkStatus( $server[0] );});   
+                </script>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ <!-- /page content -->

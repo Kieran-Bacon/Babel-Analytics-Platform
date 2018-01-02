@@ -1,0 +1,178 @@
+$def with ( Server, ServicesInformation, masterConfig)
+<!-- Inner page only to be included with nav bar -->
+<!-- page content -->
+<div class="right_col" role="main">
+
+<div class="row tile_count">
+            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-desktop"></i> Machine Address </span>
+              <div class="count">$Server[5]</div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-line-chart"></i> Analytic Port </span>
+              <div class="count"><i class="green">$Server[6]</i></div>
+            </div>
+
+            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-legal"></i> Management Port</span>
+              <div class="count"><i class="blue">$Server[7]</i></div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-code-fork"></i> SSH Port</span>
+              <div class="count">$Server[8]</div>
+            </div>
+          </div>
+
+	<div class="row">
+		<div class="col-md-8 col-sm-6 col-xs-12">
+			<div class="jumbotron" style="background-color: #464744;color: white;">
+				<h1>$Server[3]</h1>
+				<p>$Server[0]</p>
+				<p>$Server[4]</p>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-12">
+			<div class="x_panel">
+				<div class="x_title">
+				<h2>Actions </h2>
+					<ul class="nav navbar-right panel_toolbox">
+						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+						</li>
+						<li><a class="close-link"><i class="fa fa-close"></i></a>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content">
+					<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target=".bs-example-modal-sm" style="width: 100%;">View SSH Credentials</button>
+
+					<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="modal-dialog modal-sm">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+									<h4 class="modal-title" id="myModalLabel2">SSH Credentials</h4>
+								</div>
+								<div class="modal-body">
+                          
+
+									<form class="form-horizontal form-label-left input_mask">
+
+										<div class="form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12">Username</label>
+											<div class="col-md-9 col-sm-9 col-xs-12">
+												<input type="text" class="form-control" readonly="readonly" placeholder="$Server[9]">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>
+											<div class="col-md-9 col-sm-9 col-xs-12">
+												<input type="text" class="form-control" readonly="readonly" placeholder="$Server[10]">
+											</div>
+										</div>
+									</form>
+                        		</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<button type="button" class="btn btn-warning btn-lg" onclick="window.location.href='edit_server_$Server[1]'" style="width: 100%;">Edit Server Information</button>
+					<button type="button" class="btn btn-danger btn-lg" onclick="window.location.href='delete_server_$Server[1]'" style="width: 100%;">Remove Server</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5 col-sm-3 col-xs-12">
+			<div class="x_panel">
+				<div class="x_title">
+				<h2>Server Configuration Settings</h2>
+					<ul class="nav navbar-right panel_toolbox">
+						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+						</li>
+						<li><a class="close-link"><i class="fa fa-close"></i></a>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content">
+					<table class="table table-striped projects">
+						<tbody>
+							$for setting in masterConfig:
+								<tr>
+									<td>$setting[0]</td>
+									<td>
+										<table class="table table-striped projects">
+											<tbody>
+												<tr></tr>
+												$for set in setting[1]:
+													$if set[0] != "service_info" and set[0] != "permission_keys" and set[0] != "root_directory":
+														<tr>
+															<td>
+																$set[0]
+															</td>
+															<td>
+																$set[1]
+															</td>
+														</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-7 col-sm-3 col-xs-12">
+			<div class="x_panel">
+				<div class="x_title">
+				<h2>Service Information </h2>
+					<ul class="nav navbar-right panel_toolbox">
+						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+						</li>
+						<li><a class="close-link"><i class="fa fa-close"></i></a>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content">
+					<table class="table table-striped projects">
+						<thead>
+							<tr>
+								<th>Service</th>
+								<th>Status</th>
+								<th>Avg. time</th>
+								<th>Min. time</th>
+								<th>Max. Time</th>
+								<th>Pool - Gen</th>
+							</tr>
+						</thead>
+						<tbody>
+							$for Service in ServicesInformation:
+								<tr>
+									<td><p style="font-weight: bold;">$Service[0]</p></td>
+									<td>
+										$if Service[1] == "ACTIVE":
+											<i class="green" style="font-weight: bold;">$Service[1]</i>
+										$else:
+											<i class="red" style="font-weight: bold;">$Service[1]</i>
+									</td>
+									<td>$Service[2]</td>
+									<td>$Service[3]</td>
+									<td>$Service[4]</td>
+									<td><i class="green" style="font-weight: bold;">$Service[5]</i></td>
+								</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+ <!-- /page content -->

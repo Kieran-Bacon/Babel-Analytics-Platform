@@ -1,0 +1,216 @@
+$def with ( service_group, path_graphic, version_info )
+
+<div class="right_col" role="main">
+	<div class="row">
+		<div class="col-md-8 col-sm-12 col-xs-12">
+
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="jumbotron" style="background-color: #99ccff;color: white;">
+					<h1>$service_group[2]</h1>
+					<p>$service_group[3]</p>
+					<p>$service_group[4]</p>
+				</div>
+			</div>
+
+
+		</div>
+
+		<div class="col-md-4 col-sm-12 col-xs-12">
+
+			<div class="x_panel">
+				<div class="x_title">
+					<h2>Actions</h2>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content">
+
+				<button type="button" class="btn btn-success btn-lg" onclick="window.location.href='add_version_$service_group[0]'" style="width: 100%;">Create New Version</button>
+				<button type="button" class="btn btn-success btn-lg" onclick="window.location.href='edit_service_$service_group[0]'" style="width: 100%;">Edit Service Details</button>
+				<button type="button" class="btn btn-danger btn-lg" onclick="window.location.href='delete_service_$service_group[0]'" style="width: 100%;">Remove Service</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6 col-sm-12 col-xs-12">
+			<div class="x_panel">
+				<div class="x_title">
+					<h2>Service Requests <small>- # of requests for versions in "STAGING" or "LIVE".</small></h2>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content">
+					<div id="echart_line" style="height:300px;"></div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="col-md-6 col-sm-6 col-xs-12">
+			<div class="x_panel">
+				<div class="x_title">
+					<h2>$path_graphic[0] <small> - Service Path</small></h2>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content">
+					<ul class="list-unstyled timeline widget">
+						$for env in path_graphic[1]:
+							<li>
+								<div class="block">
+									<div class="block_content">
+										<h2 class="title">
+											<a>$env[0]</a><br/>
+										</h2>
+										<br/>
+										$for ver in env[1]:
+											$if len(ver) == 2:
+												<span class="label label-$ver[1]">$ver[0]</span>
+											$else:
+												<span class="label label-danger">.......</span>
+									</div>
+								</div>
+							</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="x_panel">
+                <div class="x_content">
+                    <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+
+                    	$for version in version_info:
+                    		$code:
+                    			tile = version[2]
+                    			motion = version[3]
+                    			script = version[4]
+                    			files = version[5]
+                    			app_et = ['.r','.py','.exe']
+                    			html_et = ['.html','.htm']
+
+                    		<div class="panel">
+                    			<a class="panel-heading collapsed" role="tab" id="version-$version[0]" data-toggle="collapse" data-parent="#accordion" href="#collapse-$version[0]" aria-expanded="false" aria-controls="collapse-$version[0]">
+                    			<div class="panel-title">
+									<div class="row tile_count" style="margin-top: 0px;margin-bottom: 0px">
+										<div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+											<span class="count_top"><i class="fa fa-user"></i> Version </span>
+											<div class="count">$version[1]</div>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+											<span class="count_top"><i class="fa fa-clock-o"></i> Advised Poolsize </span>
+											<div class="count red">$tile[0]</div>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+											<span class="count_top"><i class="fa fa-user"></i> Poolsize</span>
+											<div class="count green">$tile[1]</div>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+											<span class="count_top"><i class="fa fa-user"></i> Language</span>
+											<div class="count green">$tile[2]</div>
+										</div>
+									</div>
+                          		</div>
+                    			</a>
+                    			<div id="collapse-$version[0]" class="panel-collapse collapse" role="tabpanel" aria-labelledby="version-$version[0]" aria-expanded="false" style="height: 0px;">
+                    				<div class="panel-body">
+                    					
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<div class="x_panel">
+                  								<div class="x_content">
+
+													<form method="POST" action="promotion_$version[0]">
+														<div class="input-group input-group-sm">
+															<label class="input-group-addon" style="width:35%;">$motion[1][1]</label>
+															<label class="input-group-addon"><i class="fa fa-arrow-right"></i></label>
+															<button type="text" class="form-control btn btn-success"> Promote </button>
+															<label class="input-group-addon"><i class="fa fa-arrow-right"></i></label>
+															<label class="input-group-addon" style="width:35%;">$motion[2][1]</label>
+														</div>
+													</form>
+													<form method="POST" action="demotion_$version[0]">
+														<div class="input-group input-group-sm">
+															<label class="input-group-addon" style="width:35%;">$motion[1][1]</label>
+															<label class="input-group-addon"><i class="fa fa-arrow-right"></i></label>
+															<button type="text" class="form-control btn btn-danger"> Demote </button>
+															<label class="input-group-addon"><i class="fa fa-arrow-right"></i></label>
+															<label class="input-group-addon" style="width:35%;">$motion[0][1]</label>
+														</div>
+													</form>
+
+													<a href="/edit_version_$version[0]" style="width: 48%; float: left;" class="btn btn-success btn-xs"> Edit <i class="fa fa-search"></i></a>
+													<a href="/delete_version_$version[0]" style="width: 48%; float: right;" class="btn btn-danger btn-xs"> Delete <i class="fa fa-search"></i></a>
+
+													<form class="form-horizontal form-label-left input_mask">
+
+														<div class="form-group">
+															<label class="control-label col-md-3 col-sm-3 col-xs-12">Main Script</label>
+															<div class="col-md-9 col-sm-9 col-xs-12">
+																<input type="text" class="form-control" readonly="readonly" placeholder="$script[0]">
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="control-label col-md-3 col-sm-3 col-xs-12">HTML Display</label>
+															<div class="col-md-9 col-sm-9 col-xs-12">
+																<input type="text" class="form-control" readonly="readonly" placeholder="$script[1]">
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="control-label col-md-3 col-sm-3 col-xs-12">Redirect URL</label>
+															<div class="col-md-9 col-sm-9 col-xs-12">
+																<input type="text" class="form-control" readonly="readonly" placeholder="$script[2]">
+															</div>
+														</div>
+													</form>
+
+
+												</div>
+											</div>
+										</div>
+
+
+										<div class="col-md-6 col-sm-6 col-xs-12">
+
+								        $for file in files:
+								        	$ name = file[0]
+								        	$ location = file[1]
+
+								          <div class="col-md-2 col-sm-2 col-xs-2" style="min-width: 150px;">
+								            <div class="x_panel fixed_height_100">
+								              <div class="x_content">
+
+								                <div style="text-align: center; margin-bottom: 17px">
+								                  $if '.' in name and name[name.index('.'):] in app_et:
+								                    <img src="static/images/executable.png" style="height: 50px; width: 50px;">
+								                  $elif '.' in name and name[name.index('.'):] in html_et:
+								                    <img src="static/images/html.png" style="height: 50px; width: 50px;">
+								                  $else:
+								                    <img src="static/images/text-file.png" style="height: 50px; width: 50px;">
+								                </div>
+
+								                <div class="divider"></div>
+								                <div style="text-align: center;">
+								                  <p class="name_title">$name</p>
+								                  <a href="/download/$location" download class="btn btn-success btn-xs"><i class="fa fa-download"></i> Save </a>
+								                </div>
+
+								              </div>
+								            </div>
+								          </div>
+								      </div>
+
+
+
+
+                    				</div>
+                    			</div>
+                    		</div>
+                    </div>
+            	</div>
+            </div>
+		</div>
+	</div>
+</div>

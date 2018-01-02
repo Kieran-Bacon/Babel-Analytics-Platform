@@ -1,0 +1,3 @@
+SELECT sgid, pid, service_name, resource_name 
+FROM services 
+#

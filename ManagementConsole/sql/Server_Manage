@@ -1,0 +1,5 @@
+SELECT ser.srv_id, env.name, ser.display_name, ser.machine_address, ser.a_port_num, 
+	ser.m_port_num, ser.ssh_port_num, ser.ssh_username, ser.ssh_password, ser.ssh_key_address
+FROM Servers ser, Environments env 
+WHERE ser.eid = env.eid
+#

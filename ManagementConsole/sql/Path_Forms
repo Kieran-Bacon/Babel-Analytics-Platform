@@ -1,0 +1,10 @@
+INSERT INTO paths 
+VALUES (NULL, 0, ?, ?)
+#
+SELECT * FROM paths 
+WHERE pid = ?
+#
+UPDATE paths 
+SET name=?, description=? 
+WHERE pid = ?
+#

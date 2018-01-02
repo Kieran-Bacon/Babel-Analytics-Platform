@@ -1,0 +1,30 @@
+Logging : 
+{
+  root_directory = "/home/bammins/Server/demo3/Server2/logs/";
+  detail_level = "DEBUG3";
+};
+Analytic_Settings : 
+{
+  bufferSize = 256;
+  queueSize = 5;
+  portNum = 7980;
+  protocol = "HTTP";
+  service_info : 
+  {
+    root_directory = "/home/bammins/Server/demo3/Server2/services/";
+    services = ( );
+  };
+};
+Management_Settings : 
+{
+  bufferSize = 256;
+  portNum = 5665;
+  queueSize = 5;
+  usernames = ( "bammins", "william" );
+  permission_keys : 
+  {
+    admin = "Pioneer1234";
+    level_one = "asdf";
+    level_two = "qwrrt";
+  };
+};

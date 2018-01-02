@@ -1,0 +1,6 @@
+INSERT INTO services
+VALUES ( NULL, ?,?,?,? )
+#
+INSERT INTO services_versions
+VALUES ( NULL,?,?,?,?,?,?,? )
+#

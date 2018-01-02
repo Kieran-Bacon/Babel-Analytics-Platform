@@ -1,0 +1,10 @@
+SELECT env.name, srv.*  
+FROM servers srv, environments env 
+WHERE srv.srv_id = ? AND srv.eid = env.eid
+#
+SELECT ser.resource_name, sdl.status, ser.service_name 
+FROM services ser, services_versions sv, service_deployment_lkp sdl 
+WHERE sdl.eid = ? AND sdl.sid = sv.sid AND sv.sgid = ser.sgid
+GROUP BY sv.sgid
+ORDER BY sv.version DESC
+#

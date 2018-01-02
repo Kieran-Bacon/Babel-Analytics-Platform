@@ -1,0 +1,67 @@
+$def with (services)
+<!-- Inner page only to be included with nav bar -->
+<!-- page content -->
+<div class="right_col" role="main">
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Service Overview <small> All services that have be handled by the management console.</small></h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+          $for ser in services:
+            $ser
+
+          <table class="table table-striped projects">
+            <thead>
+              <tr>
+                <th style="width: 15%">Service Name</th>
+                <th style="width: 15%">Resource</th>
+                <th>Version</th>
+                <th style="width: 20%">Permissions</th>
+              </tr>
+            </thead>
+            <tbody>
+              $for ser in services:
+                <tr>
+                  <td>$ser[0]</td>
+                  <td>$ser[1]</td>
+                  <td>
+                    <table class="table table-bordered">
+                      <tbody>
+                        $for version in ser[2]:
+                          <tr> 
+                            <td><p style="font-weight: bold;">$version[0]</p></td>
+                            <td>
+                              <small>$version[1]% Complete</small>
+                              <div class="progress progress_sm">
+                                <div class="progress-bar bg-green" role="progressbar" style="width: $version[1]%;" aria-valuenow="$version[1]"></div>
+                              </div>
+                            </td>
+                          </tr>
+                      </tbody>
+                    </table> 
+                  </td>
+                  <td>
+                    <a class="btn btn-app" href="/service_details_$ser[3]">
+                      <i class="fa fa-search"></i> view
+                    </a>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ <!-- /page content -->

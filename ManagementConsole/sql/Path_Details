@@ -1,0 +1,29 @@
+SELECT env.name
+FROM environments env, env_path_lkp epl
+WHERE env.eid = epl.eid AND env.env_type = ? AND epl.pid = ?
+#
+SELECT name 
+FROM environments 
+WHERE env_type = ?
+#
+SELECT pid, name 
+FROM paths 
+WHERE pid = ?
+#
+DELETE FROM env_path_lkp 
+WHERE pid = ?
+#
+SELECT DISTINCT * 
+FROM environments 
+WHERE name = ?
+#
+INSERT INTO env_path_lkp 
+VALUES (?,?,?)
+#
+DELETE FROM paths 
+WHERE pid = ?
+#
+UPDATE paths 
+SET length = ? 
+WHERE pid = ?
+#

@@ -1,0 +1,9 @@
+version = "1.0.0.1";
+serviceInfo = {
+	workingDirectory = "./pRange/";
+	mainScript = "inRange.py";
+	language = "PYTHON";
+	poolSize = 2;
+	HTTP_Status = 303;
+	GET_HTML = "www.google.com";
+};

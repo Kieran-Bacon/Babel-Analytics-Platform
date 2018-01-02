@@ -1,0 +1,77 @@
+DEBUG3 19:12:20.929 HTTP request parsed successfully.
+MANAGEMENT 19:12:20.930 GET bammins /STATUS/* 200 
+DEBUG3 19:12:21.039 HTTP request parsed successfully.
+MANAGEMENT 19:12:21.040 GET bammins /ADDRESS/* 200 
+DEBUG3 19:12:25.465 HTTP request parsed successfully.
+MANAGEMENT 19:12:25.465 GET bammins /ADDRESS/* 200 
+DEBUG3 19:12:28.252 HTTP request parsed successfully.
+MANAGEMENT 19:12:28.253 GET bammins /STATUS/* 200 
+DEBUG3 19:13:31.243 HTTP request parsed successfully.
+MANAGEMENT 19:13:31.243 GET bammins /STATUS/* 200 
+DEBUG3 19:13:31.245 HTTP request parsed successfully.
+MANAGEMENT 19:13:31.246 GET bammins /ADDRESS/* 200 
+DEBUG3 19:13:31.865 HTTP request parsed successfully.
+MANAGEMENT 19:13:31.865 GET bammins /ADDRESS/* 200 
+DEBUG3 19:13:33.937 HTTP request parsed successfully.
+MANAGEMENT 19:13:33.937 GET bammins /STATUS/* 200 
+DEBUG3 19:14:53.191 HTTP request parsed successfully.
+MANAGEMENT 19:14:53.191 GET bammins /STATUS/* 200 
+DEBUG3 19:16:30.350 HTTP request parsed successfully.
+MANAGEMENT 19:16:30.351 GET bammins /STATUS/* 200 
+DEBUG3 19:17:11.202 HTTP request parsed successfully.
+MANAGEMENT 19:17:11.202 GET bammins /STATUS/* 200 
+DEBUG3 19:21:18.378 HTTP request parsed successfully.
+MANAGEMENT 19:21:18.378 GET bammins /STATUS/* 200 
+DEBUG3 19:24:28.649 HTTP request parsed successfully.
+MANAGEMENT 19:24:28.650 GET bammins /ADDRESS/* 200 
+DEBUG3 19:24:29.298 HTTP request parsed successfully.
+MANAGEMENT 19:24:29.471 POST bammins /NEW 200 SUCCESS.
+DEBUG3 19:25:58.333 Unrecognised header field detected: Upgrade-Insecure-Requests
+DEBUG3 19:25:58.334 Unrecognised header field detected: Cookie
+DEBUG3 19:25:58.334 HTTP request parsed successfully.
+INFO 19:25:58.334 GET /factor 303 
+DEBUG3 19:25:58.383 Unrecognised header field detected: Upgrade-Insecure-Requests
+DEBUG3 19:25:58.383 Unrecognised header field detected: Cookie
+DEBUG3 19:25:58.383 HTTP request parsed successfully.
+WARNING 19:25:58.383 HTTP status 404 sent in response to request for resource at: '/www.google.com'.
+DEBUG3 19:26:58.566 Unrecognised header field detected: Origin
+DEBUG3 19:26:58.566 HTTP request parsed successfully.
+ANALYTICS 19:26:58.600 /factor 0.0349263 0 200 
+DEBUG3 19:27:12.181 HTTP request parsed successfully.
+MANAGEMENT 19:27:12.181 GET bammins /LS 200 
+DEBUG3 19:36:59.293 HTTP request parsed successfully.
+INFO 19:36:59.293 Management Server: Resource '/factor' has been deactivate successfully
+MANAGEMENT 19:36:59.294 DELETE bammins /factor 200 
+DEBUG3 19:36:59.294 HTTP request parsed successfully.
+MANAGEMENT 19:36:59.294 GET bammins /ADDRESS/* 200 
+DEBUG3 19:37:00.243 HTTP request parsed successfully.
+MANAGEMENT 19:37:00.697 POST bammins /NEW 200 SUCCESS.
+DEBUG3 19:41:50.428 HTTP request parsed successfully.
+MANAGEMENT 19:41:50.428 GET bammins /LS 200 
+DEBUG3 21:27:57.701 HTTP request parsed successfully.
+INFO 21:27:57.701 Management Server: Resource '/factor' has been activate successfully
+MANAGEMENT 21:27:57.702 GET bammins /ACTIVATE/factor 200 
+DEBUG3 21:39:57.573 HTTP request parsed successfully.
+INFO 21:39:57.573 Management Server: Resource '/factor' has been deactivate successfully
+MANAGEMENT 21:39:57.573 GET bammins /DEACTIVATE/factor 200 
+DEBUG3 21:40:30.435 HTTP request parsed successfully.
+MANAGEMENT 21:40:30.435 GET bammins /LS 200 
+DEBUG3 21:44:31.510 HTTP request parsed successfully.
+INFO 21:44:31.510 Management Server: Resource '/factor' has been deactivate successfully
+MANAGEMENT 21:44:31.511 GET bammins /DEACTIVATE/factor 200 
+DEBUG3 21:44:41.859 HTTP request parsed successfully.
+INFO 21:44:42.792 Management Server: Resource '/factor' has been activate successfully
+MANAGEMENT 21:44:42.808 GET bammins /ACTIVATE/factor 200 
+DEBUG3 21:44:58.189 HTTP request parsed successfully.
+MANAGEMENT 21:44:58.189 GET bammins /LS 200 
+DEBUG3 22:43:24.475 HTTP request parsed successfully.
+INFO 22:43:24.515 Management Server: Resource '/factor' has been deactivate successfully
+MANAGEMENT 22:43:24.623 DELETE bammins /factor 200 
+DEBUG3 22:50:24.475 HTTP request parsed successfully.
+MANAGEMENT 22:50:24.479 DELETE bammins /factor 404 
+DEBUG3 22:50:43.540 HTTP request parsed successfully.
+MANAGEMENT 22:50:43.540 GET bammins /STATUS/* 200 
+DEBUG3 22:50:57.449 HTTP request parsed successfully.
+MANAGEMENT 22:50:57.451 GET bammins /LS 200 
+INFO 23:09:24.027 System "termination" (SIGTERM) signal received
+WARNING 23:09:24.113 Un-handled signal

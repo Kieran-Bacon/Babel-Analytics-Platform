@@ -1,0 +1,204 @@
+$def with ( type, service_info, dev_paths, version )
+
+<div class="right_col" role="main">
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="x_panel">
+				<div class="x_title">
+					<h2>Service Information Form<small>3 steps</small></h2>
+					<ul class="nav navbar-right panel_toolbox">
+						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+						</li>
+						<li><a class="close-link"><i class="fa fa-close"></i></a>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content">
+					<p>This is a basic form wizard example that inherits the colors from the selected scheme.</p>
+					<div id="wizard" class="form_wizard wizard_horizontal">
+						<ul class="wizard_steps">
+							<li>
+								<a href="#step-1">
+									<span class="step_no">1</span>
+									<span class="step_descr">
+										Step 1<br />
+										<small>Basic information</small>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#step-2">
+									<span class="step_no">2</span>
+									<span class="step_descr">
+										Step 2<br />
+										<small>File uploading</small>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#step-3">
+									<span class="step_no">3</span>
+									<span class="step_descr">
+										Step 3<br />
+										<small>Linking executables</small>
+									</span>
+								</a>
+							</li>
+						</ul>
+						<div id="step-1">
+							<form class="form-horizontal form-label-left">
+
+								$if len( service_info ) > 0:
+									<input id="edit" type="text" style="display: none;" value="$type[0]-$type[1]">
+								$else:
+									<input id="edit" type="text" style="display: none;" value="New">
+
+
+								<div class="form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12">Version <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+										<input id="version-input" type="number" class="form-control has-feedback-left" name="version" required placeholder="Version Number" value="$version"
+										$if len(type) == 0 or type[0] != 0:
+											disabled="disabled"
+										>
+											
+										
+
+										<span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12">Service name <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+										<input id="srv-name-input" type="text" class="form-control has-feedback-left" name="service_name" required placeholder="Service name"
+										$if len( service_info ) > 0:
+											value="$service_info[2]" disabled="disabled"
+										>
+										<span class="fa fa-gear form-control-feedback left" aria-hidden="true"></span>
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12">Resource name <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+										<input id="res-name-input" type="text" class="form-control has-feedback-left" name="resource_name" required placeholder="Resource name callable as a url"
+										$if len( service_info ) > 0:
+											disabled="disabled" value="$service_info[3]"
+										>
+										<span class="fa fa-globe form-control-feedback left" aria-hidden="true"></span>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<textarea class="resizable_textarea form-control" name="description" placeholder="Description about the service, authors, and stakeholders."
+										$if len(service_info) > 0:
+											disabled="disabled" >$service_info[4]</textarea>
+										$else:
+											></textarea>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12">Poolsize <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+										<input type="text" id="Poolsize" name="poolsize" />
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12">Language <span class="required">*</span></label>
+									<div id="language_select" class="col-md-6 col-sm-6 col-xs-12" style="padding-top: 8px">
+										<div class="col-md-6 col-sm-6 col-xs-3" style="float='centre'" ><input type="radio" class="flat" name="language" value=".py" required/> Python</div>
+										<div class="col-md-6 col-sm-6 col-xs-3" style="float='centre'"><input type="radio" class="flat" name="language" value=".r"/> R</div>
+										<div class="col-md-6 col-sm-6 col-xs-3" style="float='centre'"><input type="radio" class="flat" name="language" value=".sas"/> SAS</div>
+										<div class="col-md-6 col-sm-6 col-xs-3" style="float='centre'"><input type="radio" class="flat" name="language" value=".exe"/> C/C++</div>
+									</div>
+								</div>
+
+
+
+							</form>
+							<br />
+						</div>
+						<div id="step-2">
+							<h2 class="StepTitle">Step 2 Content</h2>
+							
+							<form id="service-docs-upload" action="file_upload.html" class="dropzone" enctype="multipart/form-data"></form>
+
+							<br />
+							<br />
+							<br />
+							<br />
+							<br />
+							<br />
+							<br />
+						</div>
+						<div id="step-3">
+							<h2 class="StepTitle">Step 3 Content</h2>
+
+							<form class="form-horizontal form-label-left">
+								<div class="form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12">Main executable <span class="required">*</span></label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<select id="main_script_select" class="select2_single form-control" name="main_script" placeholder="Select the script language" tabindex="-1">
+										</select>
+									</div>
+								</div>
+
+								<input type="text" id="uploaded-files" name="uploaded_files" style="display:none;">
+
+								<div class="form-group">
+									<div class="col-md-3 col-sm-3 col-xs-12"></div>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<label>
+											<input type="checkbox" class="js-switch" id="http-redirect-switch" name="ssh-key-switch" data-switchery="true" style="display: none;">
+											Redirect to external dashboard
+										</label>
+									</div>
+								</div>
+
+								<div id="httpget-page-selector" class="form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12">Service Dashboard</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<select id="get_page_select" class="select2_single form-control" name="get_page_select" tabindex="-1">
+										</select>
+									</div>
+								</div>
+
+								<div id="redirect-URL-input" class="form-group" style="display: none;">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12">External URL</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input id="redirect_URL" type="text" class="form-control has-feedback-left" name="redirect_URL" required placeholder="www.example.com">
+										<span class="fa fa-share-square-o form-control-feedback left" aria-hidden="true"></span>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12">Environment Path <span class="required">*</span></label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<select id="env_path_select" class="select2_single form-control" name="pid" placeholder="Select the script language" tabindex="-1">
+											$for path in dev_paths:
+												<option value="$path[0]">$path[1]</option>
+										</select>
+									</div>
+								</div>
+							</form>
+							<br />
+						</div>
+					</div><!-- End of Wizard -->
+				</div><!-- End of content -->
+			</div><!-- End of Panel -->
+		</div>
+	</div>
+</div>

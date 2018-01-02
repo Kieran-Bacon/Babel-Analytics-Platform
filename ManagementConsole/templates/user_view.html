@@ -1,0 +1,195 @@
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+
+          <div class="col-md-2 col-sm-4 col-xs-12 profile_left">
+
+            <div class="profile_img">
+
+              <!-- end of image cropping -->
+              <div id="crop-avatar">
+                <!-- Current avatar -->
+                <img class="img-responsive avatar-view" style="max-height: 226px;" src="images/users/admin/avatar-ninja.png" data-target="#avatar-modal" title="Change the avatar">
+
+
+
+                <!-- Cropping modal -->
+                <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <form class="avatar-form" action="crop.php" enctype="multipart/form-data" method="post">
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal" type="button">&times;</button>
+                          <h4 class="modal-title" id="avatar-modal-label">Change Avatar</h4>
+                        </div>
+                        <div class="modal-body">
+                          <div class="avatar-body">
+
+                            <!-- Upload image and data -->
+                            <div class="avatar-upload">
+                              <input class="avatar-src" name="avatar_src" type="hidden">
+                              <input class="avatar-data" name="avatar_data" type="hidden">
+                              <label for="avatarInput">Local upload</label>
+                              <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+                            </div>
+
+                            <!-- Crop and preview -->
+                            <div class="row">
+                              <div class="col-md-9">
+                                <div class="avatar-wrapper"></div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="avatar-preview preview-lg"></div>
+                                <div class="avatar-preview preview-md"></div>
+                                <div class="avatar-preview preview-sm"></div>
+                              </div>
+                            </div>
+
+                            <div class="row avatar-btns">
+                              <div class="col-md-9">
+                                <div class="btn-group">
+                                  <button class="btn btn-primary" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees">Rotate Left</button>
+                                  <button class="btn btn-primary" data-method="rotate" data-option="-15" type="button">-15deg</button>
+                                  <button class="btn btn-primary" data-method="rotate" data-option="-30" type="button">-30deg</button>
+                                  <button class="btn btn-primary" data-method="rotate" data-option="-45" type="button">-45deg</button>
+                                </div>
+                                <div class="btn-group">
+                                  <button class="btn btn-primary" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees">Rotate Right</button>
+                                  <button class="btn btn-primary" data-method="rotate" data-option="15" type="button">15deg</button>
+                                  <button class="btn btn-primary" data-method="rotate" data-option="30" type="button">30deg</button>
+                                  <button class="btn btn-primary" data-method="rotate" data-option="45" type="button">45deg</button>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <button class="btn btn-primary btn-block avatar-save" type="submit">Done</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.modal -->
+
+                <!-- Loading state -->
+                <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+              </div>
+              <!-- end of image cropping -->
+
+            </div>
+            <h3>Linford Bacon</h3>
+
+            <ul class="list-unstyled user_data">
+
+              <li>
+                <i class="fa fa-briefcase user-profile-icon"></i> Software Engineer
+              </li>
+
+              <li class="m-top-xs">
+                <i class="fa fa-envelope user-profile-icon"></i>
+                <a href="mailto:Linford.Bacon@outlook.com?Subject=Management%20Console" target="_top">Linford.Bacon@outlook.com</a>
+              </li>
+
+              <li class="m-top-xs">
+                <i class="fa fa-linkedin user-profile-icon"></i>
+                <a href="https://www.linkedin.com/in/linfordbacon" target="_blank">Linkedin Profile</a>
+              </li>
+            </ul>
+
+            <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+            <br />
+
+            <h4>Bio</h4>
+            <p>Work hard but play harder, I'm just a rad guy ready to set this bitch off! I like wind surfing and flying kites on the weekend. Tho I'm pumping iron all week long baby. #RadGuy #2016 #YOLO</p>
+
+            <!-- start skills -->
+            <h4>Skills</h4>
+            <span class="label label-info">SQL</span> &nbsp;
+            <span class="label label-default">C++</span> &nbsp;
+            <span class="label label-warning">Python</span> &nbsp;
+            <span class="label label-success">Microsoft Office</span> &nbsp;
+            <span class="label label-danger">Minesweeper</span> &nbsp;
+            <span class="label label-info">Blackjack</span> &nbsp;
+            <span class="label label-default">HTML</span> &nbsp;
+            <span class="label label-warning">COD</span> &nbsp;
+            <span class="label label-success">Presenting</span> &nbsp;
+            <span class="label label-danger">Personable</span> &nbsp;
+
+            <!-- end of skills -->
+
+          </div>
+
+
+          <!-- Page content really -->
+          <div class="col-md-9 col-sm-9 col-xs-12">
+
+                <div class="col-md-5 col-sm-6 col-xs-12">
+                  <div class="x_title">
+                    <h2>Recent Activities <small> events related to Linford</small></h2>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <ul class="list-unstyled timeline">
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>Group 1</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                          <h2 class="title">
+                            <a>addingService has been updated on Kieran's Dev</a>
+                          </h2>
+                          <div class="byline">
+                            <span>Thursday, August 18, 2016 11:52:35 PM</span> by <a>lbacon1</a>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>Dean's Crew</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                          <h2 class="title">
+                            <a>addingService has been EDITED on Kieran's Dev</a>
+                          </h2>
+                          <div class="byline">
+                            <span>Thursday, August 18, 2016 11:52:35 PM</span> by <a>dSmith1</a>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+
+                   
+                  </ul>
+                </div>
+
+            <div class="col-md-5 col-sm-6 col-xs-12">
+              <div class="x_title">
+                <h2>Group membership </h2>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+
+            <div class="col-md-2 col-sm-6 col-xs-12">
+              <div class="x_title">
+                <h2>Permissions </h2>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+SELECT ser.service_name, sv.version, epl.position, paths.length, ser.sgid 
+FROM services ser, services_versions sv, service_deployment_lkp sdl, paths, env_path_lkp epl 
+WHERE ser.sgid = sv.sgid AND sv.sid = sdl.sid AND ser.pid = paths.pid AND paths.pid = epl.pid 
+	AND sdl.eid = epl.eid AND epl.position <> paths.length 
+GROUP BY ser.sgid 
+ORDER BY epl.position DESC LIMIT 5
+#
+SELECT env.eid, env.name, env.env_type FROM environments env, env_types et 
+WHERE env.env_type = et.name 
+ORDER BY et.hierarchy ASC
+#
+SELECT COUNT(*) 
+FROM servers 
+WHERE eid = ?
+#
+SELECT sv.sgid, ser.resource_name, sv.version, sdl.status
+FROM services ser, services_versions sv, service_deployment_lkp sdl 
+WHERE sdl.sid = sv.sid AND sdl.eid = ? AND ser.sgid = sv.sgid
+GROUP BY ser.sgid
+ORDER BY sv.version DESC
+#

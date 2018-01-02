@@ -1,0 +1,202 @@
+$def with ( Info, Services, Servers )
+<div class="right_col" role="main">
+	<div class="row">
+		<div class="col-md-8 col-sm-12 col-xs-12">
+
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="jumbotron" style="background-color: #99ccff;color: white;">
+					<h1>$Info[1]</h1>
+					<p>$Info[2]</p>
+					<p>$Info[3]</p>
+				</div>
+			</div>
+
+
+		</div>
+
+		<div class="col-md-4 col-sm-12 col-xs-12">
+
+			<div class="x_panel">
+				<div class="x_title">
+					<h2>Actions</h2>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content">
+				<button type="button" class="btn btn-success btn-lg" onclick="window.location.href='environment_form_$Info[0]'" style="width: 100%;">Edit</button>
+				<button type="button" class="btn btn-danger btn-lg" onclick="window.location.href='environment_delete_$Info[0]'" style="width: 100%;">Delete</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="dashboard_graph">
+				<div class="row x_title">
+					<div class="col-md-6">
+						<h3>Service Activities
+							$if len( Services ) == 0:
+								- No Services Running
+						<small>Request Volumes</small></h3>
+					</div>
+					<div class="col-md-6">
+                    <div class="pull-right">
+                      <h3>Service avg. CPU Usage</h3>
+                    </div>
+                  </div>
+				</div>
+
+				$if len( Services ) != 0:
+					<div class="col-md-9 col-sm-9 col-xs-12">
+						<div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
+						<div style="width: 100%;">
+							<div id="echart_line" style="width:100%;height:350px;"></div>
+						</div>
+					</div>
+
+					<div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+
+						<div class="col-md-12 col-sm-12 col-xs-6">
+							<div id="graph_donut" style="width:100%; height:300px;"></div>
+						</div>
+
+					</div>
+
+					<div class="clearfix"></div>
+			</div>
+		</div>
+
+	</div>
+	<br />
+
+
+	$if len( Services ) != 0:
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="x_panel">
+					<div class="x_content">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Service Name</th>
+									<th>Time:: Min - Avg - Max</th>
+									<th>Poolsize Violations</th>
+									<th>Status</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								$for ser in Services:
+									$for i in ser:
+										$i
+									
+									<tr>
+										<th scope="row"> $ser[1] - $ser[2]</th>
+										<td> 0.04 - 0.032 - 4</td>
+										<td>345 - 3 | 4%</td>
+										<td>$ser[3]</td>
+										<td>
+											<form method="POST"
+											$if ser[3] != "ACTIVE":
+												action="/AJAX/activate_service.py"
+											$else:
+												action="/AJAX/deactivate_service.py"
+											>
+												<input style="display:none" type="text" name="eid" value="$Info[0]">
+												<input style="display:none" type="text" name="sid" value="$ser[0]">
+												$if ser[3] == "ACTIVE":
+													<button type="submit" class="btn btn-danger btn-xs">Deactivate</button>
+												$else:
+													<button type="submit" class="btn btn-primary btn-xs">Activate</button>
+											</form>
+										</td>
+									</tr>
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="dashboard_graph">
+				<div class="row x_title">
+					<div class="col-md-6">
+						<h3>Server characteristics
+							$if len( Servers ) == 0:
+								- No Servers Information
+						</h3>
+					</div>
+					<div class="col-md-6">
+                    <div class="pull-right">
+                      <h3>Requests Per Server</h3>
+                    </div>
+                  </div>
+				</div>
+
+				$if len( Servers ) != 0:
+					<div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+						<div class="col-md-12 col-sm-12 col-xs-6">
+							<div id="echart_sonar" style="height:320px;"></div>
+						</div>
+					</div>
+					<div class="col-md-9 col-sm-9 col-xs-12">
+						<div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
+						<div style="width: 100%;">
+							<div id="graph_bar_group" style="width:100%; height:280px;"></div>	
+						</div>
+					</div>
+					<div class="clearfix"></div>
+			</div>
+		</div>
+
+	</div>
+	<br />
+
+	<div class="row">
+
+		$for ser in Servers: 
+			<div class="col-md-3 col-sm-3 col-xs-6">
+				<div class="x_panel">
+					<div class="x_title">
+						<h2>$ser[1] - $ser[0]</h2>
+						<div class="clearfix"></div>
+					</div>
+					<div class="x_content">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<table class="table table-striped">
+								<tr>
+									<td>Time</td>
+									<td><span class="badge badge-success">42</span></td>
+								</tr>
+								<tr>
+									<td>Pool</td>
+									<td><span class="badge badge-success">420</span></td>
+								</tr>
+							</table>	
+						</div>
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<button type="button" class="btn btn-success btn-sm" style="width: 100%;" onclick="window.location.href='/server_details_$ser[0]'">View</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<div class="col-md-3 col-sm-3 col-xs-6">
+			<div class="x_panel">
+				<div class="x_title">
+					<h2>Add Server</h2>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content">
+					<button type="button" class="btn btn-info btn-sm" style="width: 100%;" onclick="window.location.href='#TODO'">Add Server</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

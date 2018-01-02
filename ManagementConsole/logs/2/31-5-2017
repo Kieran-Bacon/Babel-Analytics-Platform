@@ -1,0 +1,51 @@
+DEBUG3 02:33:19.546 HTTP request parsed successfully.
+MANAGEMENT 02:33:19.547 GET bammins /STATUS/* 200 
+DEBUG3 02:33:19.666 HTTP request parsed successfully.
+MANAGEMENT 02:33:19.666 GET bammins /ADDRESS/* 200 
+DEBUG3 02:33:20.320 HTTP request parsed successfully.
+MANAGEMENT 02:33:20.320 GET bammins /ADDRESS/* 200 
+DEBUG3 02:33:22.685 HTTP request parsed successfully.
+MANAGEMENT 02:33:22.685 GET bammins /STATUS/* 200 
+DEBUG3 02:36:23.668 HTTP request parsed successfully.
+MANAGEMENT 02:36:23.668 GET bammins /ADDRESS/* 200 
+DEBUG3 02:36:24.382 HTTP request parsed successfully.
+MANAGEMENT 02:36:24.657 POST bammins /NEW 200 SUCCESS.
+INFO 03:41:24.159 System "termination" (SIGTERM) signal received
+WARNING 03:41:24.170 Un-handled signal
+DEBUG3 12:01:47.919 HTTP request parsed successfully.
+INFO 12:01:47.942 Management Server: Resource '/factor' has been deactivate successfully
+MANAGEMENT 12:01:47.944 DELETE bammins /factor 200 
+DEBUG3 12:02:07.903 HTTP request parsed successfully.
+MANAGEMENT 12:02:07.903 GET bammins /STATUS/* 200 
+DEBUG3 13:05:41.761 HTTP request parsed successfully.
+MANAGEMENT 13:05:41.761 GET bammins /STATUS/* 200 
+DEBUG3 13:05:41.850 HTTP request parsed successfully.
+MANAGEMENT 13:05:41.851 GET bammins /ADDRESS/* 200 
+DEBUG3 13:06:25.278 HTTP request parsed successfully.
+MANAGEMENT 13:06:25.278 GET bammins /STATUS/* 200 
+DEBUG3 13:06:25.364 HTTP request parsed successfully.
+MANAGEMENT 13:06:25.364 GET bammins /ADDRESS/* 200 
+DEBUG3 13:06:26.206 HTTP request parsed successfully.
+MANAGEMENT 13:06:26.206 GET bammins /ADDRESS/* 200 
+DEBUG3 13:06:29.040 HTTP request parsed successfully.
+MANAGEMENT 13:06:29.040 GET bammins /STATUS/* 200 
+DEBUG3 13:07:47.481 HTTP request parsed successfully.
+MANAGEMENT 13:07:47.483 GET bammins /ADDRESS/* 200 
+DEBUG3 13:07:48.246 HTTP request parsed successfully.
+MANAGEMENT 13:07:48.623 POST bammins /NEW 200 SUCCESS.
+DEBUG3 13:14:05.566 HTTP request parsed successfully.
+INFO 13:14:05.582 Management Server: Resource '/factor' has been deactivate successfully
+MANAGEMENT 13:14:05.621 DELETE bammins /factor 200 
+DEBUG3 13:14:12.013 HTTP request parsed successfully.
+MANAGEMENT 13:14:12.016 GET bammins /STATUS/* 200 
+DEBUG3 13:14:33.794 HTTP request parsed successfully.
+MANAGEMENT 13:14:33.796 GET bammins /LS 200 
+INFO 13:15:44.973 System "termination" (SIGTERM) signal received
+WARNING 13:15:44.974 Un-handled signal
+INFO 14:05:46.705 Bin man thread started.
+DEBUG3 14:08:58.457 HTTP request parsed successfully.
+MANAGEMENT 14:08:58.457 GET bammins /STATUS/* 200 
+DEBUG3 14:08:58.545 HTTP request parsed successfully.
+MANAGEMENT 14:08:58.545 GET bammins /ADDRESS/* 200 
+DEBUG3 14:08:59.192 HTTP request parsed successfully.
+MANAGEMENT 14:08:59.192 GET bammins /ADDRESS/* 200 

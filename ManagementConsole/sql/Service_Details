@@ -1,0 +1,30 @@
+SELECT DISTINCT service_name, resource_name,
+	description, poolsize, language, pid
+FROM services 
+WHERE sgid = ?
+#
+SELECT DISTINCT env.eid, env.name 
+FROM environments env, services serv, env_path_lkp epl 
+WHERE epl.eid = env.eid AND epl.pid = serv.pid AND serv.sgid = ? 
+ORDER BY epl.position ASC
+#
+SELECT serv.version 
+FROM service_deployment_lkp envlkp, environments env,
+	services serv 
+WHERE env.eid = envlkp.eid AND env.eid = ? 
+	AND envlkp.sid = serv.sid AND serv.sgid = ?
+#
+SELECT sid, version, main_script, get_html_file, get_redirect 
+FROM services 
+WHERE sgid = ? 
+ORDER BY version DESC
+#
+SELECT env.name, env.env_type, serv.description,
+	serv.poolsize, serv.file_location, serv.main_script,
+	serv.get_html_file, serv.get_redirect 
+FROM env_path_lkp epath, environments env,
+	service_deployment_lkp sdl, services serv 
+WHERE serv.version = ? AND serv.sid = sdl.sid
+	AND sdl.eid = epath.eid AND sdl.eid = env.eid	
+ORDER BY epath.position ASC
+#

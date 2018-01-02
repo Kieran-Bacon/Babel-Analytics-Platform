@@ -1,0 +1,31 @@
+$def with ( list_of_environments )
+<div class="right_col" role="main">
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="x_panel">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th> Name </th>
+							<th> Description </th>
+							<th> Type </th>
+							<th> Actions </th>
+						</tr>
+					</thead>
+					<tbody>
+
+						$for env in list_of_environments:
+							<tr>
+								$for i in range( 1, len(env) ) :
+									<td>$env[i]</td>
+								<td>
+									<a href="/environment_details_$env[0]" class="btn btn-success btn-xs"> View <i class="fa fa-search"></i></a>
+									<a href="/environment_delete_$env[0]" class="btn btn-danger btn-xs"> Delete <i class="fa fa-search"></i></a>
+								</td>
+							</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

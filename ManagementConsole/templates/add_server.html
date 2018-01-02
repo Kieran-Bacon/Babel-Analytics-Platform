@@ -1,0 +1,207 @@
+$def with ( type, env_data, serverInfo )
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>New Analytics Server</h3>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>Server details <small>Define server connection details</small></h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+              <li><a class="close-link"><i class="fa fa-close"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <br />
+            
+            <form id="add_server" action="
+              $if type == "New":
+                add_server.html
+              $else:
+                edit_server_$type
+              " method="POST" data-parsley-validate="" class="form-horizontal form-label-left">
+
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="machine_address">Machine <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-left" id="machine-address" name="machine_address" required="" placeholder="Machine Address i.e 127.0.0.1" 
+                $if len(serverInfo) >= 10:
+                  value="$serverInfo[3]">
+                $else:
+                  value="">
+                <span class="fa fa-database form-control-feedback left" aria-hidden="true"></span>
+                <span id="machine-tick" class="fa fa-check form-control-feedback right" aria-hidden="true"></span>
+                <span id="machine-cross" class="fa fa-close form-control-feedback right" aria-hidden="true"></span>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-6" for="a_port_num">Port number <span class="required">*</span>
+              </label>
+              <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-left" id="a-port-num" name="a_port_num" required="" placeholder="Analytics Port" 
+                $if len(serverInfo) >= 10:
+                  value="$serverInfo[4]">
+                $else:
+                  value="">
+
+                <span class="fa fa-plug form-control-feedback left" aria-hidden="true"></span>
+                <span id="a-tick" class="fa fa-check form-control-feedback right" aria-hidden="true"></span>
+                <span id="a-cross" class="fa fa-close form-control-feedback right" aria-hidden="true"></span>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-left" id="m-port-num" name="m_port_num" required="" placeholder="Management Port" 
+                $if len(serverInfo) >= 10:
+                  value="$serverInfo[5]">
+                $else:
+                  value="">
+                <span class="fa fa-terminal form-control-feedback left" aria-hidden="true"></span>
+                <span id="m-tick" class="fa fa-check form-control-feedback right" aria-hidden="true"></span>
+                <span id="m-cross" class="fa fa-close form-control-feedback right" aria-hidden="true"></span>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="machine_name">Name <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-left" id="machine-name" name="machine_name" required="" placeholder="Machine name  i.e 'plato test machine'" 
+                $if len(serverInfo) >= 10:
+                  value="$serverInfo[1]">
+                $else:
+                  value="">
+                <span class="fa fa-quote-left form-control-feedback left" aria-hidden="true"></span>
+                <span id="name-tick" class="fa fa-check form-control-feedback right" aria-hidden="true"></span>
+                <span id="name-cross" class="fa fa-close form-control-feedback right" aria-hidden="true"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12">Machine description</label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <textarea class="resizable_textarea form-control" name="desc_text" placeholder="Server description..." style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 100px; margin-left: 0px; margin-right: 0px;"
+                $if len(serverInfo) >= 10:
+                  >$serverInfo[2]</textarea>
+                $else:
+                  ></textarea>    
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12">Environment</label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_group form-control" name="eid">
+                  <option value="" disabled="" selected="">Please select environment</option>
+
+                  $for group in env_data:
+                    <optgroup label="$group.pop(0)">
+                      $for env in group:
+                        $if len(serverInfo) >= 10 and env[0] == serverInfo[0]:
+                          <option selected value=$env[0]>$env[1]</option>
+                        $else:
+                          <option value=$env[0]>$env[1]</option>
+                    </optgroup>
+                </select>
+              </div>
+            </div>
+
+            <br/>
+            <h2>SSH Credentials <small>Define login credentials for the Analytics Server</small></h2>
+            <div class="ln_solid"></div>
+            
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ssh_port_num">Port number <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-left" id="ssh-port-num" name="ssh_port_num" required="" placeholder="ssh Port" 
+                $if len(serverInfo) >= 10:
+                  value="$serverInfo[6]">
+                $else:
+                  value="22">
+                <span class="fa fa-plug form-control-feedback left" aria-hidden="true"></span>
+                <span id="s-tick" class="fa fa-check form-control-feedback right" aria-hidden="true"></span>
+                <span id="s-cross" class="fa fa-close form-control-feedback right" aria-hidden="true"></span>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ssh_username">Username <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-left" id="ssh-username" name="ssh_username" required="" placeholder="SSH User" 
+                $if len(serverInfo) >= 10:
+                  value="$serverInfo[7]">
+                $else:
+                  value="">
+                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-3 col-sm-3 col-xs-12"></div>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <label>
+                  <input type="checkbox" class="js-switch" id="ssh-key-switch" name="ssh-key-switch" data-switchery="true" style="display: none;">
+                  Enable ssh key-based authentication
+                </label>
+              </div>
+            </div>
+
+
+            <div class="form-group" id="ssh-password-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ssh_password">Password <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                <input type="password" class="form-control has-feedback-left" id="ssh-password-input" name="ssh_password" required="" placeholder="SSH Password"
+
+                $if len(serverInfo) >= 10:
+                  value="no look :(" disabled="disabled">
+                $else:
+                  value="">
+
+                
+
+                <span class="fa fa-file-code-o form-control-feedback left" aria-hidden="true"></span>
+              </div>
+            </div>
+
+            <div class="form-group" id="ssh-upload-group" style="display: none;">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ssh_key">Upload private key <span class="required">*</span></label>
+              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                <label class="btn btn-default btn-file col-md-2 col-sm-2 col-xs-6">
+                  Browse <input id="ssh-key-upload" name="ssh_key" type="file" style="display: none;">
+                </label>
+                <label class="control-label col-md-6 col-sm-6 col-xs-12" for="ssh_key">No file selected...</label>
+              </div>
+              
+            </div>            
+            
+
+
+            <div class="ln_solid"></div>
+
+            <div class="form-group">
+              <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a href="manage_servers.html" class="btn btn-primary">Cancel</a>
+              </div>
+            </div>
+          </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
