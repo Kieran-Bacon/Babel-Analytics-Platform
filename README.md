@@ -1,0 +1,2 @@
+# Babel-Analytics-Platform
+The Babel Analytics Platform hosts analytical models of varies languages and provided a robust RESTful API for their operation. The design structure meant that the server could handle (and adapt) to high numbers of concurrent requests, and provided better or equivalent model performance. A UI to manage distributed networks of analytical servers, ensured consistency and managed permissions.
